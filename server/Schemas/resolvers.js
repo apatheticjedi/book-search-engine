@@ -4,7 +4,7 @@ const { User } = require('../models');
 
 const resolvers = {
     Query: {
-        getSingleUser: async (parent, args, context) => {
+        me: async (parent, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
                     .populate('-__v -password')
@@ -17,7 +17,7 @@ const resolvers = {
         },
     },
     Mutation: {
-        createUser: async (parent, args) => {
+        addUser: async (parent, args) => {
             const user = User.create(args);
             const token = signToken(user);
 
@@ -52,7 +52,7 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        deleteBook: async (parent, { bookId }, context) => {
+        removeBook: async (parent, { bookId }, context) => {
             if (context.user) {
 
                 const updatedUser = await User.findOneAndUpdate(
