@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery, useMutation } from '@apollo/client';
+import { Navigate, useParams } from 'react-router-dom';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
@@ -10,10 +11,10 @@ import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
   // const [userData, setUserData] = useState({});
-  const [userData] = useQuery(GET_ME);
+  const [loading, userData] = useQuery(GET_ME);
 
   // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
+  // const userDataLength = Object.keys(userData).length;
 
   // useEffect(() => {
   //   const getUserData = async () => {
@@ -39,6 +40,7 @@ const SavedBooks = () => {
 
   //   getUserData();
   // }, [userDataLength]);
+
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const [removeBook] = useMutation(REMOVE_BOOK);
@@ -69,8 +71,11 @@ const SavedBooks = () => {
     }
   };
 
+  if (Auth.loggedIn()) {
+    return <Navigate to="/saved" />
+  }
   // if data isn't here yet, say so
-  if (!userDataLength) {
+  if (loading) {
     return <h2>LOADING...</h2>;
   }
 
