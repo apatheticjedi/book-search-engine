@@ -20,7 +20,7 @@
 
 This is a book search application that was refactored from a RESTful API to a GraphQL API built with Apollo Server. The application allows a user to create an account, login, search for books, and save books to their profile. Saved books in the profile can be removed as well. This is an application that was created with React using Express.js that was refactored to use GraphQL. 
 
-View the deployed application here:
+View the deployed application here: [Heroku Link](https://immense-badlands-61470.herokuapp.com/)
 
 ### Built With
 
@@ -46,7 +46,7 @@ to start the server and open the page.
 
 ## Usage
 
-To use this application, view the deployed page here:  . 
+To use this application, view the deployed page here:  [Heroku Link](https://immense-badlands-61470.herokuapp.com/). 
 
 Click the 'Login/Signup' link in the header to create an account or login, search for books in the search bar, click on the 'Save This Book!' button on any book to save it to your profile. Click the 'See Your Books' link at the top of the page to view any saved books or click the 'Delete This Book!' button on any book to remove it from your profile.
 
